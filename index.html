@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Task - Colegio San Ignacio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --san-ignacio-blue: #004a99; /* Azul Institucional */
+            --light-bg: #f0f2f5;
+            --text-main: #2d3436;
+            --border: #dcdde1;
+            --success: #27ae60;
+            --error: #e74c3c;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Header Cuadro Azul */
+        header {
+            background-color: var(--san-ignacio-blue);
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+            border-bottom: 5px solid #003366;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        header p {
+            font-weight: 300;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            opacity: 0.9;
+        }
+
+        .content { padding: 35px; }
+
+        /* Inputs */
+        .student-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--san-ignacio-blue);
+        }
+
+        input[type="text"] {
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--san-ignacio-blue);
+        }
+
+        /* Pregunta y Ejemplo */
+        .task-box {
+            background: #f8fbff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #d1e3f8;
+        }
+
+        .task-box h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--san-ignacio-blue); }
+
+        .example-box {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #57606f;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px dashed #ccc;
+        }
+
+        /* Área de escritura */
+        textarea {
+            width: 100%;
+            height: 380px;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--san-ignacio-blue);
+        }
+
+        .word-counter {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--error);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .word-counter.met { color: var(--success); }
+
+        /* Botones */
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.5fr;
+            gap: 15px;
+        }
+
+        button {
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-save { background: #e2e8f0; color: #475569; }
+        .btn-resume { background: #e2e8f0; color: #475569; }
+        .btn-download { background: var(--san-ignacio-blue); color: white; }
+
+        button:hover { filter: contrast(1.1); transform: translateY(-2px); }
+        .btn-download:hover { box-shadow: 0 4px 12px rgba(0,74,153,0.3); }
+
+        @media (max-width: 600px) {
+            .student-info, .actions { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.5rem; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <h1>COLEGIO SAN IGNACIO</h1>
+        <p>Writing Task Assessment</p>
+    </header>
+
+    <div class="content">
+        <div class="student-info">
+            <div class="input-field">
+                <label>STUDENT FULL NAME</label>
+                <input type="text" id="studentName" placeholder="Enter your name..." autocomplete="off">
+            </div>
+            <div class="input-field">
+                <label>COURSE</label>
+                <input type="text" id="studentCourse" placeholder="e.g. 8th Grade B" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="task-box">
+            <h3>Critical Thinking Question:</h3>
+            <p><strong>“What was the most significant or unexpected discovery you made while researching the relevant aspects of your assigned game?"</strong></p>
+            
+            <div class="example-box">
+                <strong>Example:</strong><br>
+                <i>"To be honest, I thought Roblox was just a simple game for kids, like a basic version of Minecraft. But the most unexpected thing I discovered is that it’s actually not a 'game' at all—it’s a massive platform for creating them. The most significant discovery was finding out that almost every game on the platform is made by the users themselves... I realized that Roblox isn't just about 'wasting time' playing; it's a place where you can learn programming, digital art, and business."</i>
+            </div>
+        </div>
+
+        <textarea id="writingArea" placeholder="Begin your writing task here..."></textarea>
+        
+        <div id="counterLabel" class="word-counter">
+            Word Count: <span id="wordCount">0</span> / 80 minimum
+        </div>
+
+        <div class="actions">
+            <button class="btn-save" onclick="saveData()">Save Progress</button>
+            <button class="btn-resume" onclick="loadData()">Resume</button>
+            <button class="btn-download" onclick="downloadWord()">Download (.docx)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const writingArea = document.getElementById('writingArea');
+    const wordCountSpan = document.getElementById('wordCount');
+    const counterLabel = document.getElementById('counterLabel');
+
+    // Contador de palabras
+    writingArea.addEventListener('input', () => {
+        const text = writingArea.value.trim();
+        const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+        wordCountSpan.innerText = words;
+        if (words >= 80) counterLabel.classList.add('met');
+        else counterLabel.classList.remove('met');
+    });
+
+    // Guardado Local
+    function saveData() {
+        const name = document.getElementById('studentName').value;
+        const data = {
+            name: name,
+            course: document.getElementById('studentCourse').value,
+            text: writingArea.value
+        };
+        localStorage.setItem('sanIgnacioWriting_v2', JSON.stringify(data));
+        alert('Work saved! You can close the tab and return later using the "Resume" button.');
+    }
+
+    // Carga Local
+    function loadData() {
+        const saved = localStorage.getItem('sanIgnacioWriting_v2');
+        if (saved) {
+            const data = JSON.parse(saved);
+            document.getElementById('studentName').value = data.name || '';
+            document.getElementById('studentCourse').value = data.course || '';
+            writingArea.value = data.text || '';
+            writingArea.dispatchEvent(new Event('input'));
+            alert('Your previous work has been restored.');
+        } else {
+            alert('No saved work found on this device.');
+        }
+    }
+
+    // Generar Documento
+    function downloadWord() {
+        const name = document.getElementById('studentName').value.trim();
+        const course = document.getElementById('studentCourse').value.trim();
+        const text = writingArea.value.trim();
+        const words = wordCountSpan.innerText;
+
+        if (!name || !course || !text) {
+            alert('Please complete your name, course, and the writing task before downloading.');
+            return;
+        }
+
+        if (parseInt(words) < 80) {
+            if (!confirm(`Warning: You only have ${words} words. The minimum is 80. Download anyway?`)) return;
+        }
+
+        const htmlContent = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+            <head><meta charset='utf-8'></head>
+            <body style="font-family: 'Segoe UI', Arial; padding: 40px;">
+                <h1 style="color: #004a99; text-align: center;">COLEGIO SAN IGNACIO</h1>
+                <p style="text-align: center; font-weight: bold;">Writing Task Assessment</p>
+                <hr>
+                <p><strong>Student Name:</strong> ${name}</p>
+                <p><strong>Course:</strong> ${course}</p>
+                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+                <p><strong>Word Count:</strong> ${words}</p>
+                <hr>
+                <p style="color: #666;"><em>Question: What was the most significant or unexpected discovery you made while researching the relevant aspects of your assigned game?</em></p>
+                <div style="margin-top: 20px; line-height: 1.6; font-size: 12pt;">
+                    ${text.replace(/\n/g, '<br>')}
+                </div>
+            </body>
+            </html>
+        `;
+
+        const blob = new Blob(['\ufeff', htmlContent], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Writing_Task_${name.replace(/\s+/g, '_')}.doc`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+
+</body>
+</html>
